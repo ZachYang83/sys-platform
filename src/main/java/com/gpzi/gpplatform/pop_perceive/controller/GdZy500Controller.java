@@ -42,7 +42,7 @@ public class GdZy500Controller {
         wrapper.in("UID_500m",ids_list);
         wrapper.groupBy("time");
         wrapper.orderByAsc("time");
-        wrapper.select("time,sum(sums) as sums");
+        wrapper.select("time,sum(sums) /24 as sums");
         List<GdZy500> gdZy500List = gdZy500Service.list(wrapper);
         return Result.succ(gdZy500List);
     }
@@ -57,8 +57,8 @@ public class GdZy500Controller {
         String[] arr = ids_string2.split(",");
         Object[] ids_list = Arrays.stream(arr).toArray();
         wrapper.in("UID_500m",ids_list);
-        wrapper.select("sb,sum(businessman) as businessman,sum(taxiDriver) as taxiDriver,sum(student) as student,sum(salariatFixed) as salariatFixed,sum(indiBussiness) as indiBussiness,sum(salariatUnfixed) as salariatUnfixed,sum(finance) as finance,sum(manuIndustry) as manuIndustry,sum(adMedia) as adMedia,sum(eduTra) as eduTra,sum(correspondence) as correspondence,sum(architecture) as architecture,sum(service) as service,sum(realEstate) as realEstate,sum(logistics) as logistics,sum(medTreatment) as medTreatment,sum(IT) as IT");
-        wrapper.groupBy("sb");
+        wrapper.select("sb,sum(businessman) /24 as businessman,sum(taxiDriver) /24 as taxiDriver,sum(student) /24 as student,sum(salariatFixed) /24 as salariatFixed,sum(indiBussiness) /24 as indiBussiness,sum(salariatUnfixed) /24 as salariatUnfixed,sum(finance) /24 as finance,sum(manuIndustry) /24 as manuIndustry,sum(adMedia) /24 as adMedia,sum(eduTra) /24 as eduTra,sum(correspondence) /24 as correspondence,sum(architecture) /24 as architecture,sum(service) /24 as service,sum(realEstate) /24 as realEstate,sum(logistics) /24 as logistics,sum(medTreatment) /24 as medTreatment,sum(IT) /24 as IT");
+//        wrapper.groupBy("sb");
         List<GdZy500> gdZy500List = gdZy500Service.list(wrapper);
         return Result.succ(gdZy500List);
     }

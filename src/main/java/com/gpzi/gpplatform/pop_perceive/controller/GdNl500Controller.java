@@ -44,8 +44,8 @@ public class GdNl500Controller {
         String[] arr = ids_string2.split(",");
         Object[] ids_list = Arrays.stream(arr).toArray();
         wrapper.in("UID_500m", ids_list);
-        wrapper.select("sb,sum(betw6_11) as betw6_11,sum(betw12_15) as betw12_15,sum(betw16_18) as betw16_18,sum(betw19_22) as betw19_22,sum(betw23_25) as betw23_25,sum(betw26_34) as betw26_34,sum(betw35_45) as betw35_45,sum(betw46_55) as betw46_55,sum(betw56_65) as betw56_65,sum(above65) as above65,sum(total_pop) as total_pop");
-        wrapper.groupBy("sb");
+        wrapper.select("sb,sum(betw6_11) /24 as betw6_11,sum(betw12_15) /24 as betw12_15,sum(betw16_18) /24 as betw16_18,sum(betw19_22) /24 as betw19_22,sum(betw23_25) /24 as betw23_25,sum(betw26_34) /24 as betw26_34,sum(betw35_45) /24 as betw35_45,sum(betw46_55) /24 as betw46_55,sum(betw56_65) /24 as betw56_65,sum(above65) /24 as above65,sum(total_pop) /24 as total_pop");
+//        wrapper.groupBy("sb");
         List<GdNl500> gdHj500List = gdNl500Service.list(wrapper);
         return Result.succ(gdHj500List);
     }
